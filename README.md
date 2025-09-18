@@ -31,12 +31,22 @@ Een moderne, minimalistisch gestijlde advertentie website voor een websitebouwer
    npm install
    ```
 
-2. **Development server starten:**
+2. **E-mail configuratie (TransIP):**
+   ```bash
+   # Kopieer het voorbeeld bestand
+   cp env.example .env.local
+   
+   # Bewerk .env.local en vul je SMTP gegevens in:
+   # SMTP_USER=info@agatasoftware.nl
+   # SMTP_PASS=jouw-email-wachtwoord
+   ```
+
+3. **Development server starten:**
    ```bash
    npm run dev
    ```
 
-3. **Website bekijken:**
+4. **Website bekijken:**
    Open [http://localhost:3000](http://localhost:3000) in je browser
 
 ## 📦 Build voor Productie
@@ -76,6 +86,53 @@ De header en footer zijn gecentraliseerd in:
 - Clean URLs zonder extensies
 - Responsive images
 - Fast loading times
+
+## 📧 E-mail Functionaliteit
+
+Het contactformulier verstuurt automatisch:
+- **Bevestigingsmail naar klant** - Met reactietijd en bedrijfsinformatie
+- **Notificatiemail naar eigenaar** - Met alle formuliergegevens
+
+### SMTP Configuratie (TransIP)
+```bash
+# In .env.local:
+SMTP_USER=info@agatasoftware.nl
+SMTP_PASS=jouw-email-wachtwoord
+```
+
+### E-mail Templates
+- Professionele HTML templates
+- Responsive design voor mobiel
+- Automatische bevestiging en notificaties
+
+## 🚀 Deployment op TransIP
+
+### Node.js Hosting (Aanbevolen)
+1. **Configuratie aanpassen:**
+   - `output: 'export'` is uitgeschakeld voor API routes
+   - E-mail API endpoint is beschikbaar
+
+2. **Build en deploy:**
+   ```bash
+   npm install
+   npm run build
+   npm start
+   ```
+
+3. **Environment variables instellen:**
+   - Kopieer `env.example` naar `.env.local`
+   - Vul je SMTP credentials in
+
+### Statische Hosting
+Voor statische hosting zonder API routes:
+1. Uncomment `output: 'export'` in `next.config.js`
+2. Gebruik externe services voor contactformulier
+
+## 🔒 Beveiliging
+
+- SMTP credentials worden veilig opgeslagen in environment variables
+- HTTPS wordt ondersteund voor veilige communicatie
+- Geen gevoelige data wordt opgeslagen in de frontend
 
 ## 📞 Contact Informatie
 

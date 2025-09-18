@@ -163,7 +163,8 @@ export default function Demo() {
     }
   }, [id, router]);
   
-  if (!id || !demoTemplates[id as keyof typeof demoTemplates]) {
+  const templateId = parseInt(id as string, 10);
+  if (!id || typeof id !== 'string' || isNaN(templateId) || !demoTemplates[templateId as keyof typeof demoTemplates]) {
     return (
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
@@ -179,7 +180,7 @@ export default function Demo() {
     );
   }
 
-  const template = demoTemplates[id as keyof typeof demoTemplates];
+  const template = demoTemplates[templateId as keyof typeof demoTemplates];
 
   return (
     <Layout>
